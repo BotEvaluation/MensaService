@@ -1,0 +1,56 @@
+name: Create API Test
+description: Easily create an API test and let a bot generate the code for it
+title: "[API Test]: "
+labels: ["api-test"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out this form to create an API test.
+  - type: dropdown
+    id: request_method
+    attributes:
+      label: Request method
+      description: Which request method should be used?
+      options:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+    validations:
+      required: true
+  - type: input
+    id: request_path
+    attributes:
+      label: Request Path
+      description: Which path should the request be sent to?
+      placeholder: ex. /mensa/Aachen/dishes
+    validations:
+      required: true
+  - type: textarea
+    id: request_body
+    attributes:
+      label: Request Body
+      description: Please enter the request body.
+      render: json
+  - type: dropdown
+    id: status_code
+    attributes:
+      label: Expected Status Code
+      description: Which response status code do you expect?
+      options:
+        - 200 (OK)
+        - 201 (Created)
+        - 400 (Bad Request)
+        - 401 (Unauthorized)
+        - 403 (Forbidden)
+        - 404 (Not Found)
+    validations:
+      required: true
+  - type: checkboxes
+    id: cb
+    attributes:
+      label: Response Body Assertions
+      description: Do you want to include assertions on the response body? These are modeled after the issue has been opened.
+      options:
+        - label: Include response body assertion(s)
